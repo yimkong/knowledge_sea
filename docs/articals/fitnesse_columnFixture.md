@@ -1,6 +1,6 @@
 话不多说，从实例入手：
 运行结果：
-![alt 属性文本](../imgs/result.png)
+![alt 属性文本](../imgs/result.png)<br>
 fitnesse脚本：
 ``` java
 |myfit.TestColumnFixture|
