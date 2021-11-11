@@ -91,9 +91,10 @@ private static TypeAdapter makeAdapter(Fixture fixture, String name) throws Thro
 }
 ```
 这一块略复杂，意思是根据正则表达式匹配header来判断，来一一分析
-● regexMethodPattern匹配的话，header本身代表一个方法(获取方法名的时候会去掉后面的俩个叹号或者俩个问号)，而当前列下面的text当成正则表达式，通过反射调用方法得到值并将值跟text进行正则匹配，匹配则测试通过。例如上面实例的quotient??和quotient!! 下面的.*和\d+\.\d+都是正则表达式，去匹配quotient方法返回的5
-● methodPattern匹配，header本身代表一个方法(获取方法名的时候会去掉后面的问号)，这个就是简单的调用方法和比较结果。可以有多种表达方式，只要匹配methodPattern就行，例如quotient?，quotient()，quotient!
-● fieldPattern匹配，header本身代表一个属性，例如=numerator=，=numerator，numerator= 都匹配，虽然都是从numerator属性里面操作数据，但是等号放在前面和后面实际是不同的。前面讲Binding的时候就直到，优先判断等号是不是在前面，再判断是不是最后面来决定Binding会是SaveBinding还是RecallBinding。
+
+- regexMethodPattern匹配的话，header本身代表一个方法(获取方法名的时候会去掉后面的俩个叹号或者俩个问号)，而当前列下面的text当成正则表达式，通过反射调用方法得到值并将值跟text进行正则匹配，匹配则测试通过。例如上面实例的quotient??和quotient!! 下面的.*和\d+\.\d+都是正则表达式，去匹配quotient方法返回的5
+- methodPattern匹配，header本身代表一个方法(获取方法名的时候会去掉后面的问号)，这个就是简单的调用方法和比较结果。可以有多种表达方式，只要匹配methodPattern就行，例如quotient?，quotient()，quotient!
+- fieldPattern匹配，header本身代表一个属性，例如=numerator=，=numerator，numerator= 都匹配，虽然都是从numerator属性里面操作数据，但是等号放在前面和后面实际是不同的。前面讲Binding的时候就直到，优先判断等号是不是在前面，再判断是不是最后面来决定Binding会是SaveBinding还是RecallBinding。
 
 SaveBinding是干什么的呢，源码如下：
 ```java
