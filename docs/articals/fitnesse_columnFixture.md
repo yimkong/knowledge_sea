@@ -43,8 +43,8 @@ private double denominator;
 看到这，略思考一下，表里的数据是怎么处理的？前三列还好理解，官方的示例也有，无非就是简单的设置对应类的属性值并且调用方法再对比结果。但是后面啥意思呢？别急，读完这篇文章后就理解了。
 
 column fixture 处理测试表的时候，是从上到下一行一行扫描读取处理的。第一行是这个表对应的自定义fixture类的全限定名，第二行是表头headers，代表数据的处理方式。剩下的就是对应的text数据。
-进入到ColumnFixture类里的时候我们可以看到有俩个属性如下图：
-![alt 属性文本](../imgs/columnFixtureCode.png)
+进入到ColumnFixture类里的时候我们可以看到有俩个属性如下图：<br>
+![alt 属性文本](../imgs/columnFixtureCode.png)<br>
 columnBindings 这个属性是在表初始化的时候用来绑定headers的，每个header经过解析都会绑定一个具体的继承Binding的子类，不同header的Binding子类对每一列的数据的处理方式不一样。
 首先来分析如何解析header并绑定Binding的：
 Binding的核心代码：
