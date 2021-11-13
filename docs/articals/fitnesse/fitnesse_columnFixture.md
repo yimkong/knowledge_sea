@@ -1,6 +1,6 @@
 话不多说，从实例入手：
 运行结果：
-![alt 属性文本](../imgs/result.png)<br>
+![alt 属性文本](../../imgs/result.png)<br>
 fitnesse脚本：
 ``` java
 |myfit.TestColumnFixture|
@@ -44,7 +44,7 @@ private double denominator;
 
 column fixture 处理测试表的时候，是从上到下一行一行扫描读取处理的。第一行是这个表对应的自定义fixture类的全限定名，第二行是表头headers，代表数据的处理方式。剩下的就是对应的text数据。
 进入到ColumnFixture类里的时候我们可以看到有俩个属性如下图：<br>
-![alt 属性文本](../imgs/columnFixtureCode.png)<br>
+![alt 属性文本](../../imgs/columnFixtureCode.png)<br>
 columnBindings 这个属性是在表初始化的时候用来绑定headers的，每个header经过解析都会绑定一个具体的继承Binding的子类，不同header的Binding子类对每一列的数据的处理方式不一样。
 首先来分析如何解析header并绑定Binding的：
 Binding的核心代码：
