@@ -1,3 +1,17 @@
-## 安装centos
-安装docker的时候走了歪路，一开始按照别的教程，后面找到一份对的教程，才发现有冲突了`Error: docker-ce-cli conflicts with 2:docker-1.13.1-208.git7d71120.el7_9.x86_64`，于是需要通过命令`yum list installed | grep docker`找出已安装的，然后再`yum -y remove ..`删除对应的docker
-推荐的教程：https://phoenixnap.com/kb/how-to-install-docker-centos-7
+## linux最小包环境
+
+教程：https://cloud.tencent.com/developer/article/1701451
+uname -r
+yum -y update
+yum install vim -y
+yum install net-tools
+设置网络：https://www.cnblogs.com/freeweb/p/5335973.html
+
+## 安装docker
+
+yum remove docker  docker-common docker-selinux docker-engine
+yum install -y yum-utils device-mapper-persistent-data lvm2
+yum-config-manager --add-repo http://download.docker.com/linux/centos/docker-ce.repo（中央仓库）
+yum list docker-ce --showduplicates | sort -r
+yum -y install docker-ce-18.03.1.ce
+
