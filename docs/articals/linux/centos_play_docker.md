@@ -29,3 +29,34 @@ yum list docker-ce --showduplicates | sort -r
 
 yum -y install docker-ce-18.03.1.ce
 
+## 安装Nextcloud
+[教程地址]( https://zhuanlan.zhihu.com/p/107820215 )
+[安装docker-compose]( https://yeasy.gitbook.io/docker_practice/compose/install )
+
+将compose yml文件放在用户～路径下，以便每次登录的时候执行`docker-compose up -d`就能调用到这个文件
+
+## docker trouble shooting
+用这个指令来查看详细日志：`journalctl -eu docker`
+
+## 工具
+### 资源
+[docker常用指令]( https://www.cnblogs.com/jpfss/p/11227384.html )
+[防火墙开放对应端口]( https://br-bai.github.io/2020/12/25/docker部署nextcloud%2020.0.4%20最新版个人网盘/ )
+
+### 常用指令
+`service docker restart`
+
+防火墙
+
+`firewall-cmd --zone=public --add-port=8088/tcp --permanent`
+
+`firewall-cmd --reload`
+
+`firewall-cmd --query-port=8088/tcp`
+
+`docker stop $(docker ps -aq)`
+
+查看容器日志：`docker logs --since 30m CONTAINER_ID`
+
+遇到问题`(38)Function not implemented: AH00141: Could not initialize random number generator`解决方案：
+[更新linux内核]( https://phoenixnap.com/kb/how-to-upgrade-kernel-centos )
