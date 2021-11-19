@@ -1,3 +1,5 @@
+[toc]
+
 ## linux最小包环境
 
 [安装教程]( https://cloud.tencent.com/developer/article/1701451 )
@@ -35,8 +37,20 @@ yum -y install docker-ce-18.03.1.ce
 
 将compose yml文件放在用户～路径下，以便每次登录的时候执行`docker-compose up -d`就能调用到这个文件
 
+```shell
+docker run -d --name nextcloud \
+-v /volume1/SYNC/nextcloud:/var/www/html \
+--link mysql:mysql \
+--link redis:redis \
+--restart unless-stopped \
+-p 8000:80 nextcloud
+```
 ## docker trouble shooting
 用这个指令来查看详细日志：`journalctl -eu docker`
+
+## 安装filerun
+?> 偶然发现另一个比nextcloud好的云盘工具，折腾一下
+[安装教程]( https://post.smzdm.com/p/ag82pn83/ )
 
 ## 工具
 ### 资源
