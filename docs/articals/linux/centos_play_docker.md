@@ -1,5 +1,3 @@
-[toc]
-
 ## linux最小包环境
 
 [安装教程]( https://cloud.tencent.com/developer/article/1701451 )
@@ -37,6 +35,10 @@ yum -y install docker-ce-18.03.1.ce
 
 将compose yml文件放在用户～路径下，以便每次登录的时候执行`docker-compose up -d`就能调用到这个文件
 
+`GRANT ALL PRIVILEGES ON nextcloud.* TO 'nextcloud'@'%' WITH GRANT OPTION;`
+
+`FLUSH privileges;`
+
 ```shell
 docker run -d --name nextcloud \
 -v /volume1/SYNC/nextcloud:/var/www/html \
@@ -52,13 +54,32 @@ docker run -d --name nextcloud \
 ?> 偶然发现另一个比nextcloud好的云盘工具，折腾一下
 [安装教程]( https://post.smzdm.com/p/ag82pn83/ )
 
+## 安装redis
+[官方教程]( https://www.apiref.com/docker-zh/docker-install-redis.html )
+
+`docker run --name redis -p 6379:6379 -v $PWD/data:/data  -d redis redis-server --appendonly yes`
+
+`docker run -d --name nextcloud -v /volume1/SYNC/nextcloud:/var/www/html --link mysql:mysql --link redis:redis --restart unless-stopped -p 8000:80 nextcloud`
+
 ## 工具
 ### 资源
 [docker常用指令]( https://www.cnblogs.com/jpfss/p/11227384.html )
+
 [防火墙开放对应端口]( https://br-bai.github.io/2020/12/25/docker部署nextcloud%2020.0.4%20最新版个人网盘/ )
 
+[高性能搭建nextcloud]( https://hexo.chensmallx.top/2021/04/08/nextcloud-on-docker/#稍微带过一下安装docker的方法)
 ### 常用指令
 `service docker restart`
+
+`scp ddd root@192.168.0.200:/root/docker-compose.yml`
+
+mysql 创建用户以及数据库
+```roomsql
+CREATE USER 'nextcloud'@'localhost' IDENTIFIED BY 'password';
+CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
+GRANT ALL PRIVILEGES on nextcloud.* to 'nextcloud'@'localhost';
+FLUSH privileges;
+```
 
 防火墙
 
@@ -74,3 +95,4 @@ docker run -d --name nextcloud \
 
 遇到问题`(38)Function not implemented: AH00141: Could not initialize random number generator`解决方案：
 [更新linux内核]( https://phoenixnap.com/kb/how-to-upgrade-kernel-centos )
+
