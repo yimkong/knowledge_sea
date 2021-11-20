@@ -60,7 +60,8 @@ docker run -d --name nextcloud \
 `docker run --name redis -p 6379:6379 -v $PWD/data:/data  -d redis redis-server --appendonly yes`
 
 `docker run -d --name nextcloud -v /volume1/SYNC/nextcloud:/var/www/html --link mysql:mysql --link redis:redis --restart unless-stopped -p 8000:80 nextcloud`
-
+### docker and redis 
+https://www.cmdschool.org/archives/12091
 ## 工具
 ### 资源
 [docker常用指令]( https://www.cnblogs.com/jpfss/p/11227384.html )
