@@ -98,6 +98,8 @@ FLUSH privileges;
 
 ` 4047 InnoDB refuses to write tables with ROW_FORMAT=COMPRESSED or KEY_BLOCK_SIZE.` [解决方案]( https://techoverflow.net/2021/08/17/how-to-fix-nextcloud-4047-innodb-refuses-to-write-tables-with-row_formatcompressed-or-key_block_size/ )
 
+`Nextcloud 出现 请求过多 ` 解决方案:登录mysql对应的nextcloud数据库oc_bruteforce_attempts表清空
+
 !> 需要主意的是，只是内网登录的时候，必须要把登录界面的数据库的地址改为docker的mysql实例名，虽然不知道啥原因
 
 ## 后记
