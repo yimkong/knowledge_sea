@@ -60,7 +60,7 @@ docker run -d --name nextcloud \
 `docker run --name redis -p 6379:6379 -v $PWD/data:/data  -d redis redis-server --appendonly yes`
 
 `docker run -d --name nextcloud -v /volume1/SYNC/nextcloud:/var/www/html --link mysql:mysql --link redis:redis --restart unless-stopped -p 8000:80 nextcloud`
-### docker and redis 
+### docker 结合 redis 
 https://www.cmdschool.org/archives/12091
 ## 工具
 ### 资源
@@ -69,6 +69,8 @@ https://www.cmdschool.org/archives/12091
 [防火墙开放对应端口]( https://br-bai.github.io/2020/12/25/docker部署nextcloud%2020.0.4%20最新版个人网盘/ )
 
 [高性能搭建nextcloud]( https://hexo.chensmallx.top/2021/04/08/nextcloud-on-docker/#稍微带过一下安装docker的方法)
+
+[硬盘挂载]( https://cloud.tencent.com/developer/article/1776730 )
 ### 常用指令
 `service docker restart`
 
