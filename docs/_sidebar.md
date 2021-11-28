@@ -11,3 +11,4 @@
 - 读而思
 - 杂记
     - [虚拟机黑群晖经验谈](articals/life/ds_qunhui_virtual.md)
+- redis
