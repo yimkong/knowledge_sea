@@ -7,7 +7,7 @@
 - 数据库
 - linux
     - [Centos 安装docker](articals/linux/centos_play_docker.md) 
-    - [docker 笔记]（articals/linux/docker_note.md）
+    - [docker 笔记](articals/linux/docker_note.md)
 - 读而思
 - 杂记
     - [虚拟机黑群晖经验谈](articals/life/ds_qunhui_virtual.md)
